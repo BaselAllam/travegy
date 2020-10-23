@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travegy/screens/mobile/bottomnavbar/bottomnacbar.dart';
-import 'package:travegy/screens/web/homepage.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
-import 'dart:io';
+import 'package:travegy/screens/checkHome.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: kIsWeb == true ? WebHomePage() : Platform.isAndroid ? BottomNavBar() : Platform.isIOS ? BottomNavBar() : WebHomePage(),
+      home: CheckHome(),
     );
   }
 }

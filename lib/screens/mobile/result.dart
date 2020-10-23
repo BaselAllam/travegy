@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travegy/screens/mobile/filter.dart';
 import 'package:travegy/widgets/mobile/item.dart';
 
 
@@ -38,7 +39,7 @@ List<String> visitedTitle = [
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.transparent,
-        iconTheme: IconThemeData(color: Colors.indigo, size: 20.0),
+        iconTheme: IconThemeData(color: Colors.indigo, size: 25.0),
         title: Text(
           widget.className == 'Result' ?
           'Result' : 'Destinations',
@@ -56,6 +57,14 @@ List<String> visitedTitle = [
             leading: Text(
               '${hotelName.length.toString()} items',
               style: TextStyle(color: Colors.grey, fontSize: 15.0, fontWeight: FontWeight.bold),
+            ),
+            trailing: IconButton(
+              icon: Icon(Icons.tune),
+              color: Colors.indigo,
+              iconSize: 20.0,
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(fullscreenDialog: true, builder: (_) {return Filter();}));
+              },
             ),
           ),
         ),

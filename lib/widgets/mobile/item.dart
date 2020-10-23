@@ -21,7 +21,7 @@ bool pressed = false;
     return InkWell(
       onTap: () {},
           child: Container(
-        height: MediaQuery.of(context).size.height /2.5,
+        height: MediaQuery.of(context).size.height /2.3,
         margin: EdgeInsets.fromLTRB(5.0, 10.0, 5.0, 10.0),
         decoration: BoxDecoration(
           color: Colors.white,
