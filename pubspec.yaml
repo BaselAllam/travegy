@@ -1,5 +1,5 @@
 name: travegy
-description: A new Flutter project.
+description: Travegy an Online Travel Agency for Flight Tickets, Train Tickets, Activities, Visas, Hij and Omrah
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -25,6 +25,8 @@ dependencies:
     sdk: flutter
   font_awesome_flutter: ^8.10.0
   url_launcher: ^5.7.5
+  scoped_model: ^1.0.1
+  http: ^0.12.0+1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -53,9 +55,9 @@ flutter:
     - assets/russia.jpg
     - assets/TAlogo.png
     - assets/venice.jpg
-    - assets/facebook.png
-    - assets/instagram.png
-    - assets/linkedin.png
+    - assets/egyptairlogo.png
+    - assets/emirates.png
+    - assets/etihad.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
