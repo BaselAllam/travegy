@@ -58,6 +58,10 @@ List<String> visitedTitle = [
               '${hotelName.length.toString()} items',
               style: TextStyle(color: Colors.grey, fontSize: 15.0, fontWeight: FontWeight.bold),
             ),
+            title: Text(
+                'Cairo - London\n 12 Aug 2020 - 24 Aug 2020 - 1 Adult',
+                style: TextStyle(color: Colors.indigo, fontSize: 13.0, fontWeight: FontWeight.normal),
+              ),
             trailing: IconButton(
               icon: Icon(Icons.tune),
               color: Colors.indigo,

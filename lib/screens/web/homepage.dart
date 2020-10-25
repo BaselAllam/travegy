@@ -158,32 +158,37 @@ bool oneWay = false;
               
               Container(
                 margin: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),
-                height: MediaQuery.of(context).size.height/2.3,
+                height: MediaQuery.of(context).size.height/2,
                 alignment: Alignment.center,
-                child: Row(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Padding(
-                        padding: EdgeInsets.all(20.0),
-                        child: Text(
-                            'Popular\n  Destinations',
-                            style: TextStyle(color: Colors.white, fontSize: responseHomePopularFont(data), fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
-                          ),
-                      ),
-                    Container(
-                      width: responseiveHomePopularContainerWidth(data),
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          imageContainer(0, 'assets/venice.jpg', 'Venice', data),
-                          imageContainer(1, 'assets/russia.jpg', 'Russia', data),
-                          imageContainer(2, 'assets/maldive.jpg', 'Maldive', data),
-                          imageContainer(3, 'assets/roma.jpg', 'Roma', data),
-                          imageContainer(4, 'assets/venice.jpg', 'Venice', data),
-                          imageContainer(5, 'assets/russia.jpg', 'Russia', data),
-                          imageContainer(6, 'assets/maldive.jpg', 'Maldive', data),
-                          imageContainer(7, 'assets/roma.jpg', 'Roma', data),
-                        ],
+                    SafeArea(
+                        top: true,
+                        child: Padding(
+                          padding: EdgeInsets.all(20.0),
+                          child: Text(
+                              'Popular\n  Destinations',
+                              style: TextStyle(color: Colors.white, fontSize: responseHomePopularFont(data), fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
+                            ),
+                        ),
+                    ),
+                    Flexible(
+                      child: Container(
+                        height: MediaQuery.of(context).size.height/2 - 50,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            imageContainer(0, 'assets/venice.jpg', 'Venice', data),
+                            imageContainer(1, 'assets/russia.jpg', 'Russia', data),
+                            imageContainer(2, 'assets/maldive.jpg', 'Maldive', data),
+                            imageContainer(3, 'assets/roma.jpg', 'Roma', data),
+                            imageContainer(4, 'assets/venice.jpg', 'Venice', data),
+                            imageContainer(5, 'assets/russia.jpg', 'Russia', data),
+                            imageContainer(6, 'assets/maldive.jpg', 'Maldive', data),
+                            imageContainer(7, 'assets/roma.jpg', 'Roma', data),
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -421,12 +426,16 @@ bool oneWay = false;
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              enderTitle('Quick Links', () {}),
-              enderSubTitle('Join Us', () {}),
-              enderSubTitle('Home', () {}),
               enderTitle('DownLoad Our Apps', () {}),
-              enderSubTitle('Android Users', () {}),
-              enderSubTitle('IOS Users', () {}),
+              enderSubTitle('Android Users', () {
+                Scaffold.of(context).showSnackBar(snack('Our apps coming soon stay tuned'));
+              }),
+              enderSubTitle('IOS Users', () {
+                Scaffold.of(context).showSnackBar(snack('Our apps coming soon stay tuned'));
+              }),
+              enderTitle('Resources', () {}),
+              enderSubTitle('FAQ', () {}),
+              enderSubTitle('Contact Us', () {}),
             ],
           ),
         ),
@@ -437,11 +446,6 @@ bool oneWay = false;
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              enderTitle('Resources', () {}),
-              enderSubTitle('Help', () {}),
-              enderSubTitle('FAQ', () {}),
-              enderSubTitle('Privacy', () {}),
-              enderSubTitle('Contact Us', () {}),
               Container(
                 margin: EdgeInsets.all(5.0),
                 decoration: BoxDecoration(
@@ -500,6 +504,17 @@ bool oneWay = false;
         title,
         textAlign: TextAlign.start,
         style: TextStyle(color: Colors.black54, fontSize: 18.0, fontWeight: FontWeight.bold, height: 2.0),
+      ),
+    );
+  }
+  snack(String content) {
+    return SnackBar(
+      backgroundColor: Colors.indigo,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0))),
+      duration: Duration(seconds: 5),
+      content: Text(
+        content,
+        style: TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold)
       ),
     );
   }

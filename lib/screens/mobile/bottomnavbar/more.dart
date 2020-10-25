@@ -45,6 +45,7 @@ class _AccountState extends State<Account> {
             item('Wishlist', Icons.favorite, () {}),
             item('Setting', Icons.settings, () {}),
             item('Contact Us', Icons.phone, () {}),
+            item('Faq', Icons.format_quote, () {}),
             item('About Us', Icons.info, () {}),
             Padding(
               padding: EdgeInsets.all(15.0),

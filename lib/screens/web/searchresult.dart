@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:travegy/responsive/home/result/responsiveResult.dart';
 import 'package:travegy/responsive/home/result/responsiveResultDeals.dart';
 import 'package:travegy/responsive/home/result/responsiveResultFilter.dart';
+import 'package:travegy/screens/web/webFilter.dart';
 
 
 
@@ -33,7 +34,6 @@ List<bool> airline = [false, false, false, false, false, false,];
   @override
   Widget build(BuildContext context) {
     var data = MediaQuery.of(context);
-    print(MediaQuery.of(context).size.width);
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
@@ -52,37 +52,6 @@ List<bool> airline = [false, false, false, false, false, false,];
               ),
             ),
         iconTheme: IconThemeData(color: Colors.indigo, size: 20.0),
-        // bottom: PreferredSize(
-        //   preferredSize: Size(0.0, 75.0),
-        //   child: Container(
-        //     decoration: BoxDecoration(
-        //       color: Colors.indigo,
-        //       borderRadius: BorderRadius.circular(45.0)
-        //     ),
-        //     padding: EdgeInsets.all(10.0),
-        //     child: ListTile(
-        //       title: Text(
-        //           'from Cairo to London @ \n15-Aug-2020 return 20-Nov-2020',
-        //           style: TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold),
-        //         ),
-        //       trailing: DecoratedBox(
-        //         decoration: BoxDecoration(
-        //           color: Colors.white,
-        //           shape: BoxShape.circle,
-        //         ),
-        //         child: Padding(
-        //           padding: EdgeInsets.all(8.0),
-        //           child: Icon(
-        //             Icons.search,
-        //             color: Colors.indigo,
-        //             size: 45.0
-        //           ),
-        //         ),
-        //       ),
-        //       onTap: () {},
-        //     ),
-        //   ),
-        // ),
       ),
       body: Container(
           child: Container(
@@ -101,22 +70,17 @@ List<bool> airline = [false, false, false, false, false, false,];
                           '${title.length.toString()} results',
                           style: TextStyle(color: Colors.indigo, fontSize: 25.0, fontWeight: FontWeight.bold),
                         ),
+                        subtitle: Text(
+                          'Cairo - London\n 12 Aug 2020 - 24 Aug 2020 - 1 Adult',
+                          style: TextStyle(color: Colors.indigo, fontSize: 18.0, fontWeight: FontWeight.normal),
+                        ),
                         trailing: data.size.width > 1200 ? Icon(Icons.flight, color: Colors.red, size: 30.0) : 
                         IconButton(
                           icon: Icon(Icons.tune),
                           color: Colors.red,
                           iconSize: 30.0,
                           onPressed: () {
-                            showModalBottomSheet(
-                              context: context,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
-                              ),
-                              backgroundColor: Colors.white,
-                              builder: (BuildContext context){
-                                return filter();
-                              }
-                            );
+                            Navigator.push(context, MaterialPageRoute(fullscreenDialog: true, builder: (_) {return WebFilter();}));
                           },
                         ),
                       ),
@@ -141,22 +105,17 @@ List<bool> airline = [false, false, false, false, false, false,];
                           '${title.length.toString()} results',
                           style: TextStyle(color: Colors.indigo, fontSize: 25.0, fontWeight: FontWeight.bold),
                         ),
+                        subtitle: Text(
+                          'Cairo - London\n 12 Aug 2020 - 24 Aug 2020 - 1 Adult',
+                          style: TextStyle(color: Colors.indigo, fontSize: 18.0, fontWeight: FontWeight.normal),
+                        ),
                         trailing: data.size.width > 1200 ? Icon(Icons.flight, color: Colors.red, size: 30.0) : 
                         IconButton(
                           icon: Icon(Icons.tune),
                           color: Colors.red,
                           iconSize: 30.0,
                           onPressed: () {
-                            showModalBottomSheet(
-                              context: context,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
-                              ),
-                              backgroundColor: Colors.white,
-                              builder: (BuildContext context){
-                                return filter();
-                              }
-                            );
+                            Navigator.push(context, MaterialPageRoute(fullscreenDialog: true, builder: (_) {return WebFilter();}));
                           },
                         ),
                       ),
@@ -225,22 +184,17 @@ List<bool> airline = [false, false, false, false, false, false,];
                           '${title.length.toString()} results',
                           style: TextStyle(color: Colors.indigo, fontSize: 25.0, fontWeight: FontWeight.bold),
                         ),
+                        subtitle: Text(
+                          'Cairo - London\n 12 Aug 2020 - 24 Aug 2020 - 1 Adult',
+                          style: TextStyle(color: Colors.indigo, fontSize: 18.0, fontWeight: FontWeight.normal),
+                        ),
                         trailing: data.size.width > 1200 ? Icon(Icons.flight, color: Colors.red, size: 30.0) : 
                         IconButton(
                           icon: Icon(Icons.tune),
                           color: Colors.red,
                           iconSize: 30.0,
                           onPressed: () {
-                            showModalBottomSheet(
-                              context: context,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
-                              ),
-                              backgroundColor: Colors.white,
-                              builder: (BuildContext context){
-                                return filter();
-                              }
-                            );
+                            Navigator.push(context, MaterialPageRoute(fullscreenDialog: true, builder: (_) {return WebFilter();}));
                           },
                         ),
                       ),

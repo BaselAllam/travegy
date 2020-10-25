@@ -44,6 +44,29 @@ bool oneWay = false;
           child: ListView(
             scrollDirection: Axis.vertical,
             children: [
+              Padding(
+                  padding: const EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 10.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        'One Way?',
+                        style: TextStyle(color: Colors.black54, fontSize: 25.0, fontWeight: FontWeight.bold),
+                      ),
+                      Checkbox(
+                        activeColor: Colors.transparent,
+                        checkColor: Colors.indigo,
+                        hoverColor: Colors.indigo,
+                        focusColor: Colors.black54,
+                        value: oneWay,
+                        onChanged: (value){
+                          setState(() {
+                            oneWay = value;
+                          });
+                        }
+                      ),
+                    ],
+                  ),
+                ),
               field('Depature City', TextInputType.text, travelFromController, travelFromKey, Icons.flight_takeoff),
               field('Arrival City', TextInputType.text, travelToController, travelToKey, Icons.flight_land),
               dateSelector('Depature Date', Icons.date_range),
