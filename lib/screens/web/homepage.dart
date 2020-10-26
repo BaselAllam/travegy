@@ -33,6 +33,31 @@ DateTime returnDate = DateTime.now();
 
 bool oneWay = false;
 
+List dealsLinks = [
+  'https://c140.travelpayouts.com/click?shmarker=300934&trs=2801&promo_id=4380&source_type=banner&type=click',
+  'https://c121.travelpayouts.com/click?shmarker=300934&trs=2801&promo_id=4605&source_type=banner&type=click',
+  'https://c117.travelpayouts.com/click?shmarker=300934&trs=2801&promo_id=4339&source_type=banner&type=click',
+  'https://c62.travelpayouts.com/click?shmarker=300934&trs=2801&promo_id=1973&source_type=banner&type=click',
+  'https://c142.travelpayouts.com/click?shmarker=300934&trs=2801&promo_id=4270&source_type=banner&type=click',
+  'https://c10.travelpayouts.com/click?shmarker=300934&trs=2801&promo_id=540&source_type=banner&type=click',
+  'https://c122.travelpayouts.com/click?shmarker=300934&trs=2801&promo_id=3697&source_type=banner&type=click',
+  'https://c98.travelpayouts.com/click?shmarker=300934&trs=2801&promo_id=2438&source_type=banner&type=click',
+  'https://c44.travelpayouts.com/click?shmarker=300934&trs=2801&promo_id=2704&source_type=banner&type=click',
+];
+
+
+List dealsImage = [
+  'https://c140.travelpayouts.com/content?promo_id=4380&trs=2801&shmarker=300934&type=init',
+  'https://c121.travelpayouts.com/content?promo_id=4605&trs=2801&shmarker=300934&type=init',
+  'https://c117.travelpayouts.com/content?promo_id=4339&trs=2801&shmarker=300934&type=init',
+  'https://c62.travelpayouts.com/content?promo_id=1973&trs=2801&shmarker=300934&type=init',
+  'https://c142.travelpayouts.com/content?promo_id=4270&trs=2801&shmarker=300934&type=init',
+  'https://c10.travelpayouts.com/content?promo_id=540&trs=2801&shmarker=300934&type=init',
+  'https://c122.travelpayouts.com/content?promo_id=3697&trs=2801&shmarker=300934&type=init',
+  'https://c98.travelpayouts.com/content?promo_id=2438&trs=2801&shmarker=300934&type=init',
+  'https://c44.travelpayouts.com/content?promo_id=2704&trs=2801&shmarker=300934&type=init'
+];
+
   @override
   Widget build(BuildContext context) {
     var data = MediaQuery.of(context);
@@ -162,7 +187,6 @@ bool oneWay = false;
                   ),
                 ],
               ),
-              
               Container(
                 margin: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),
                 height: MediaQuery.of(context).size.height/2,
@@ -196,6 +220,32 @@ bool oneWay = false;
                             imageContainer(7, 'assets/roma.jpg', 'Roma', data),
                           ],
                         ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),
+                height: MediaQuery.of(context).size.height/2,
+                alignment: Alignment.center,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SafeArea(
+                        top: true,
+                        child: Padding(
+                          padding: EdgeInsets.all(20.0),
+                          child: Text(
+                              'Hot Global\n  Offers',
+                              style: TextStyle(color: Colors.white, fontSize: responseHomePopularFont(data), fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
+                            ),
+                        ),
+                    ),
+                    Flexible(
+                      child: Container(
+                        height: MediaQuery.of(context).size.height/2 - 50,
+                        child: deals(data),
                       ),
                     ),
                   ],
@@ -287,22 +337,27 @@ bool oneWay = false;
     );
   }
   imageContainer(int index, String image, String name, MediaQueryData data){
-    return Container(
-      width: responseiveHomePopularItemContainerWidth(data),
-      margin: EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(image),
-          colorFilter: ColorFilter.mode(Colors.black26, BlendMode.darken),
-          fit: BoxFit.fill,
+    return InkWell(
+      onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (_) {return CityOfTheDay();}));
+        },
+          child: Container(
+        width: responseiveHomePopularItemContainerWidth(data),
+        margin: EdgeInsets.all(10.0),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(image),
+            colorFilter: ColorFilter.mode(Colors.black26, BlendMode.darken),
+            fit: BoxFit.fill,
+          ),
+          borderRadius: BorderRadius.circular(15.0),
         ),
-        borderRadius: BorderRadius.circular(15.0),
+        alignment: Alignment.center,
+        child: Text(
+          name,
+          style: TextStyle(color: Colors.white, fontSize: 50.0, fontWeight: FontWeight.bold),
+          ),
       ),
-      alignment: Alignment.center,
-      child: Text(
-        name,
-        style: TextStyle(color: Colors.white, fontSize: 50.0, fontWeight: FontWeight.bold),
-        ),
     );
   }
   dateSelector(String title, IconData icon, MediaQueryData data) {
@@ -545,6 +600,36 @@ bool oneWay = false;
         content,
         style: TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold)
       ),
+    );
+  }
+  deals(MediaQueryData data) {
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: dealsLinks.length,
+      itemBuilder: (context, index){
+        return InkWell(
+          onTap: () async {
+            String url = dealsLinks[index];
+            if (await canLaunch(url)) {
+              await launch(url);
+            } else {
+              throw 'Could not launch $url';
+            }
+          },
+          child: Container(
+            width: responseiveHomePopularItemContainerWidth(data),
+            margin: EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20.0),
+              image: DecorationImage(
+                image: NetworkImage(dealsImage[index]),
+                fit: BoxFit.fill
+              ),
+            ),
+          ),
+        );
+      }
     );
   }
 }

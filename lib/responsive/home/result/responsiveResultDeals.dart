@@ -25,10 +25,10 @@ responsiveDealsItem(MediaQueryData data){
   double screenWidth = data.size.width;
 
   if(screenWidth <= 1100){
-    return 200.0;
+    return 300.0;
   }else if(screenWidth <= 1220){
-    return 170.0;
+    return 250.0;
   }else{
-    return 150.0;
+    return 220.0;
   }
 }
