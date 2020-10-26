@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:travegy/screens/about.dart';
+import 'package:travegy/screens/contact.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Account extends StatefulWidget {
@@ -22,7 +24,7 @@ class _AccountState extends State<Account> {
               child: ListTile(
                 title: Text(
                   'Bassel Allam',
-                  style: TextStyle(color: Colors.black, fontSize: 25.0, fontWeight: FontWeight.bold),
+                  style: TextStyle(color: Colors.indigo, fontSize: 25.0, fontWeight: FontWeight.bold),
                 ),
                 subtitle: Text(
                     'Top Traveller\n long press to edit your profile',
@@ -44,9 +46,12 @@ class _AccountState extends State<Account> {
             ),
             item('Wishlist', Icons.favorite, () {}),
             item('Setting', Icons.settings, () {}),
-            item('Contact Us', Icons.phone, () {}),
-            item('Faq', Icons.format_quote, () {}),
-            item('About Us', Icons.info, () {}),
+            item('Contact Us', Icons.phone, () {
+              Navigator.push(context, MaterialPageRoute(fullscreenDialog: true, builder: (_) {return ContactUs();}));
+            }),
+            item('About Us', Icons.info, () {
+              Navigator.push(context, MaterialPageRoute(fullscreenDialog: true, builder: (_) {return About();}));
+            }),
             Padding(
               padding: EdgeInsets.all(15.0),
               child: Row(
@@ -63,7 +68,7 @@ class _AccountState extends State<Account> {
               children: [
                 FlatButton(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-                  color: Colors.black,
+                  color: Colors.indigo,
                   child: Text('Sign Out', style: TextStyle(color: Colors.white, fontSize: 20.0)),
                   onPressed: () {}
                 ),
@@ -80,9 +85,9 @@ class _AccountState extends State<Account> {
       child: ListTile(
         title: Text(
             title,
-            style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.bold),
+            style: TextStyle(color: Colors.indigo, fontSize: 20.0, fontWeight: FontWeight.bold),
           ),
-        trailing: Icon(icon, size: 20.0, color: Colors.grey),
+        trailing: Icon(icon, size: 20.0, color: Colors.red),
         onTap: navigation,
       ),
     );

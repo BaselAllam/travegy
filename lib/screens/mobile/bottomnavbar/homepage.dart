@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travegy/screens/cityoftheday.dart';
 import 'package:travegy/screens/mobile/result.dart';
 
 
@@ -60,6 +61,42 @@ bool pressed = false;
                     ),
                   ),
               ),
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          'City of\n The Day',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.indigo, fontSize: 30.0, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, decoration: TextDecoration.underline, decorationColor: Colors.white, height: 2.0),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (_) {return CityOfTheDay();}));
+                          },
+                          child: Container(
+                            height: MediaQuery.of(context).size.height/3,
+                            width: MediaQuery.of(context).size.width/2,
+                            margin: EdgeInsets.all(20.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20.0),
+                              image: DecorationImage(
+                                image: AssetImage('assets/venice.jpg'),
+                                fit: BoxFit.fill
+                              ),
+                            ),
+                            alignment: Alignment.center,
+                            child: Text(
+                              'Venice',
+                              style: TextStyle(color: Colors.white, fontSize: 25.0, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ListTile(
                   title: Text(
                     'Popular Destinations',

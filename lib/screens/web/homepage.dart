@@ -4,6 +4,9 @@ import 'package:travegy/responsive/home/responsiveHomeEnder.dart';
 import 'package:travegy/responsive/home/responsiveHomeHeader.dart';
 import 'package:travegy/responsive/home/responsiveHomeSearch.dart';
 import 'package:travegy/responsive/home/responsivePopularItem.dart';
+import 'package:travegy/screens/about.dart';
+import 'package:travegy/screens/contact.dart';
+import 'package:travegy/screens/cityoftheday.dart';
 import 'package:travegy/screens/web/searchresult.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -64,8 +67,12 @@ bool oneWay = false;
                       ),
                       SizedBox(width: data.size.width <= 760 ? 20.0 : MediaQuery.of(context).size.width/6),
                       barItem('Home', () {}, data),
-                      barItem('About', () {}, data),
-                      barItem('Contact', () {}, data),
+                      barItem('About', () {
+                        Navigator.push(context, MaterialPageRoute(fullscreenDialog: true, builder: (_) {return About();}));
+                      }, data),
+                      barItem('Contact', () {
+                        Navigator.push(context, MaterialPageRoute(fullscreenDialog: true, builder: (_) {return ContactUs();}));
+                      }, data),
                       social(FontAwesomeIcons.facebook, 'https://www.facebook.com/travelopia', data),
                       social(FontAwesomeIcons.instagram, 'https://www.instagram.com/travelopia.travel/', data),
                       social(FontAwesomeIcons.linkedin, 'https://www.linkedin.com/company/travelopiaeg/?viewAsMember=true', data),
@@ -209,20 +216,25 @@ bool oneWay = false;
                           style: TextStyle(color: Colors.white, fontSize: responseHomeCityOfTheDayFont(data), fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, decoration: TextDecoration.underline, decorationColor: Colors.indigo),
                         ),
                     ),
-                    Container(
-                      width: MediaQuery.of(context).size.width/2.5,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.0),
-                        image: DecorationImage(
-                          image: AssetImage('assets/venice.jpg'),
-                          fit: BoxFit.fill
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (_) {return CityOfTheDay();}));
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width/2.5,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.0),
+                          image: DecorationImage(
+                            image: AssetImage('assets/venice.jpg'),
+                            fit: BoxFit.fill
+                          ),
                         ),
-                      ),
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Venice',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white, fontSize: 55.0, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic,),
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Venice',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white, fontSize: 55.0, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic,),
+                        ),
                       ),
                     ),
                   ],
@@ -423,20 +435,37 @@ bool oneWay = false;
           width: responseiveHomeEnderItemWidth(data),
           height: responseiveHomeEnderItemHeight(data),
           margin: EdgeInsets.all(10.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              enderTitle('DownLoad Our Apps', () {}),
-              enderSubTitle('Android Users', () {
-                Scaffold.of(context).showSnackBar(snack('Our apps coming soon stay tuned'));
-              }),
-              enderSubTitle('IOS Users', () {
-                Scaffold.of(context).showSnackBar(snack('Our apps coming soon stay tuned'));
-              }),
-              enderTitle('Resources', () {}),
-              enderSubTitle('FAQ', () {}),
-              enderSubTitle('Contact Us', () {}),
-            ],
+          child: Builder(
+            builder: (BuildContext context){
+              return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                enderTitle('DownLoad Our Apps', () {}),
+                enderSubTitle('Android Users', () {
+                  Scaffold.of(context).showSnackBar(snack('Our apps coming soon stay tuned'));
+                }),
+                enderSubTitle('IOS Users', () {
+                  Scaffold.of(context).showSnackBar(snack('Our apps coming soon stay tuned'));
+                }),
+                enderTitle('Resources', () {}),
+                enderSubTitle('About', () {
+                  Navigator.push(context, MaterialPageRoute(fullscreenDialog: true, builder: (_) {return About();}));
+                }),
+                enderSubTitle('Contact Us', () {
+                  Navigator.push(context, MaterialPageRoute(fullscreenDialog: true, builder: (_) {return ContactUs();}));
+                }),
+                enderSubTitle('Copyright © 2020 Bassel Allam', () async {
+                  String url = 'https://www.linkedin.com/in/bassel-allam-012b65b3/';
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  } else {
+                    throw 'Could not launch $url';
+                    }
+                  },
+                ),
+              ],
+            );
+            },
           ),
         ),
         Container(
