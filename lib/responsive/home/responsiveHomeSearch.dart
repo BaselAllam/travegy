@@ -9,19 +9,19 @@ responseiveHomeSearchContainerHeight(MediaQueryData data) {
   if(screenHeight <= 440){
     return data.size.height/1;
  }else if(screenHeight <= 520){
-    return data.size.height/1.2;
+    return data.size.height/1;
  }else if(screenHeight <= 570){
-    return data.size.height/1.4;
+    return data.size.height/1.1;
  }else if(screenHeight <= 640){
-    return data.size.height/1.6;
+    return data.size.height/1.3;
  }else if(screenHeight <= 710){
-    return data.size.height/1.8;
+    return data.size.height/1.5;
  }else if(screenHeight <= 810){
-    return data.size.height/2;
+    return data.size.height/1.8;
   }else if(screenHeight <= 870){
-    return data.size.height/2.3;
+    return data.size.height/2;
   }else if(screenHeight > 870){
-    return data.size.height/2.5;
+    return data.size.height/2.2;
   }
 }
 

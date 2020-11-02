@@ -6,7 +6,6 @@ import 'package:travegy/responsive/home/responsiveHomeSearch.dart';
 import 'package:travegy/responsive/home/responsivePopularItem.dart';
 import 'package:travegy/screens/about.dart';
 import 'package:travegy/screens/contact.dart';
-import 'package:travegy/screens/cityoftheday.dart';
 import 'package:travegy/screens/web/searchresult.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -57,6 +56,9 @@ List dealsImage = [
   'https://c98.travelpayouts.com/content?promo_id=2438&trs=2801&shmarker=300934&type=init',
   'https://c44.travelpayouts.com/content?promo_id=2704&trs=2801&shmarker=300934&type=init'
 ];
+
+
+List<bool> pressed = [true, false, false];
 
   @override
   Widget build(BuildContext context) {
@@ -126,6 +128,126 @@ List dealsImage = [
                     child: Column(
                       children: [
                         Padding(
+                          padding: const EdgeInsets.fromLTRB(20.0, 5.0, 10.0, 5.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  if(pressed[0] == false){
+                                    setState(() {
+                                      pressed[0] = true;
+                                      pressed[1] = false;
+                                      pressed[2] = false;
+                                    });
+                                  }else{
+                                    setState(() {
+                                      pressed[0] = true;
+                                      pressed[1] = false;
+                                      pressed[2] = false;
+                                    });
+                                  }
+                                },
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    color: pressed[0] == true ? Colors.indigo : Colors.transparent,
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'Flight',
+                                      style: TextStyle(color: pressed[0] == true ? Colors.white : Colors.grey, fontSize: 25.0, fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  if(pressed[1] == false){
+                                    setState(() {
+                                      pressed[0] = false;
+                                      pressed[1] = true;
+                                      pressed[2] = false;
+                                    });
+                                  }else{
+                                    setState(() {
+                                      pressed[0] = false;
+                                      pressed[1] = true;
+                                      pressed[2] = false;
+                                    });
+                                  }
+                                },
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    color: pressed[1] == true ? Colors.indigo : Colors.transparent,
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'Train',
+                                      style: TextStyle(color: pressed[1] == true ? Colors.white : Colors.grey, fontSize: 25.0, fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  if(pressed[2] == false){
+                                    setState(() {
+                                      pressed[0] = false;
+                                      pressed[1] = false;
+                                      pressed[2] = true;
+                                    });
+                                  }else{
+                                    setState(() {
+                                      pressed[0] = false;
+                                      pressed[1] = true;
+                                      pressed[2] = false;
+                                    });
+                                  }
+                                },
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    color: pressed[2] == true ? Colors.indigo : Colors.transparent,
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'Cars',
+                                      style: TextStyle(color: pressed[2] == true ? Colors.white : Colors.grey, fontSize: 25.0, fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 100.0,
+                          margin: EdgeInsets.only(bottom: 10.0, top: 5.0, left: 20.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              field('Depature City', TextInputType.text, travelFromController, travelFromKey, Icons.flight_takeoff),
+                              field('Arrival City', TextInputType.text, travelToController, travelToKey, Icons.flight_land),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 100.0,
+                          margin: EdgeInsets.only(bottom: 10.0, top: 10.0, left: 20.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              dateSelector('Depature Date', Icons.date_range, data),
+                              dateSelector('Return Date', Icons.date_range, data),
+                            ],
+                          ),
+                        ),
+                        Padding(
                           padding: const EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 10.0),
                           child: Row(
                             children: [
@@ -145,28 +267,6 @@ List dealsImage = [
                                   });
                                 }
                               ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          height: 100.0,
-                          margin: EdgeInsets.only(bottom: 10.0, top: 10.0, left: 20.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              field('Depature City', TextInputType.text, travelFromController, travelFromKey, Icons.flight_takeoff),
-                              field('Arrival City', TextInputType.text, travelToController, travelToKey, Icons.flight_land),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          height: 100.0,
-                          margin: EdgeInsets.only(bottom: 10.0, top: 10.0, left: 20.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              dateSelector('Depature Date', Icons.date_range, data),
-                              dateSelector('Return Date', Icons.date_range, data),
                             ],
                           ),
                         ),
@@ -266,11 +366,7 @@ List dealsImage = [
                           style: TextStyle(color: Colors.white, fontSize: responseHomeCityOfTheDayFont(data), fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, decoration: TextDecoration.underline, decorationColor: Colors.indigo),
                         ),
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (_) {return CityOfTheDay();}));
-                      },
-                      child: Container(
+                    Container(
                         width: MediaQuery.of(context).size.width/2.5,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20.0),
@@ -280,13 +376,19 @@ List dealsImage = [
                           ),
                         ),
                         alignment: Alignment.center,
-                        child: Text(
-                          'Venice',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white, fontSize: 55.0, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic,),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: Colors.white38,
+                            shape: BoxShape.circle
+                          ),
+                            child: IconButton(
+                            icon: Icon(Icons.play_arrow),
+                            color: Colors.black,
+                            iconSize: 25.0,
+                            onPressed: () {},
+                          ),
                         ),
                       ),
-                    ),
                   ],
                 ),
               ),
@@ -338,9 +440,7 @@ List dealsImage = [
   }
   imageContainer(int index, String image, String name, MediaQueryData data){
     return InkWell(
-      onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (_) {return CityOfTheDay();}));
-        },
+      onTap: () {},
           child: Container(
         width: responseiveHomePopularItemContainerWidth(data),
         margin: EdgeInsets.all(10.0),

@@ -23,6 +23,8 @@ final _formKey = GlobalKey<FormState>();
 DateTime depatureDate = DateTime.now();
 DateTime returnDate = DateTime.now();
 
+List<bool> pressed = [true, false, false];
+
 bool oneWay = false;
 
   @override
@@ -44,6 +46,104 @@ bool oneWay = false;
           child: ListView(
             scrollDirection: Axis.vertical,
             children: [
+              Padding(
+                          padding: const EdgeInsets.fromLTRB(20.0, 5.0, 10.0, 5.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  if(pressed[0] == false){
+                                    setState(() {
+                                      pressed[0] = true;
+                                      pressed[1] = false;
+                                      pressed[2] = false;
+                                    });
+                                  }else{
+                                    setState(() {
+                                      pressed[0] = true;
+                                      pressed[1] = false;
+                                      pressed[2] = false;
+                                    });
+                                  }
+                                },
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    color: pressed[0] == true ? Colors.indigo : Colors.transparent,
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'Flight',
+                                      style: TextStyle(color: pressed[0] == true ? Colors.white : Colors.grey, fontSize: 25.0, fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  if(pressed[1] == false){
+                                    setState(() {
+                                      pressed[0] = false;
+                                      pressed[1] = true;
+                                      pressed[2] = false;
+                                    });
+                                  }else{
+                                    setState(() {
+                                      pressed[0] = false;
+                                      pressed[1] = true;
+                                      pressed[2] = false;
+                                    });
+                                  }
+                                },
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    color: pressed[1] == true ? Colors.indigo : Colors.transparent,
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'Train',
+                                      style: TextStyle(color: pressed[1] == true ? Colors.white : Colors.grey, fontSize: 25.0, fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  if(pressed[2] == false){
+                                    setState(() {
+                                      pressed[0] = false;
+                                      pressed[1] = false;
+                                      pressed[2] = true;
+                                    });
+                                  }else{
+                                    setState(() {
+                                      pressed[0] = false;
+                                      pressed[1] = true;
+                                      pressed[2] = false;
+                                    });
+                                  }
+                                },
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    color: pressed[2] == true ? Colors.indigo : Colors.transparent,
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'Cars',
+                                      style: TextStyle(color: pressed[2] == true ? Colors.white : Colors.grey, fontSize: 25.0, fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
               Padding(
                   padding: const EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 10.0),
                   child: Row(
